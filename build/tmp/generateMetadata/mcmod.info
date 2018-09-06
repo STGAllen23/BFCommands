@@ -1,0 +1,8 @@
+[
+    {
+        "modid": "commands",
+        "name": "Commands",
+        "version": "1.0-SNAPSHOT",
+        "description": "A simple commands plugin"
+    }
+]

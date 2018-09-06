@@ -1,0 +1,7 @@
+[{
+  "modid": "customcommands",
+  "Name": "Custom Commands",
+  "version":1.0,
+  "description": "Simple command plugin for pixelmon servers.",
+  "authorlist": ["STG_Allen"]
+}]
