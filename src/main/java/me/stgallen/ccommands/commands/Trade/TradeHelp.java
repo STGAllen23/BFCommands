@@ -1,7 +1,9 @@
-package me.stgallen.ccommands.commands;
+package me.stgallen.ccommands.commands.Trade;
 
 import com.google.common.collect.Lists;
+import com.sun.javafx.collections.MappingChange;
 import me.stgallen.ccommands.Commands;
+import me.stgallen.ccommands.PluginInfo;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
 import org.spongepowered.api.command.CommandResult;
@@ -13,15 +15,13 @@ import org.spongepowered.api.service.pagination.PaginationList;
 import org.spongepowered.api.service.pagination.PaginationService;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
-import me.stgallen.ccommands.PluginInfo;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class TrainerHelp implements CommandExecutor {
-        @Override
-        public CommandResult execute(CommandSource source, CommandContext context) throws CommandException {
-        Map<List<String>, CommandSpec> commands = Commands.Subcommands;
+public class TradeHelp implements CommandExecutor {
+    @Override
+    public CommandResult execute(CommandSource source, CommandContext args) throws CommandException {
+        Map<List<String>, CommandSpec> commands = Commands.Tradecommands;
         List<Text> helpList = Lists.newArrayList();
 
         for (List<String> aliases : commands.keySet()) {
@@ -29,20 +29,19 @@ public class TrainerHelp implements CommandExecutor {
 
             Text commandHelp = Text.builder()
                     .append(Text.builder()
-                            .append(Text.of(TextColors.GOLD, "/trainer " + aliases.toString().replace("[", "").replace("]", " ")))
+                            .append(Text.of(TextColors.GOLD, "/trade " + aliases.toString().replace("[", "").replace("]", "")))
                             .build())
                     .append(Text.builder()
                             .append(Text.of(TextColors.WHITE, " - " + commandSpec.getShortDescription(source).get().toPlain() + "\n"))
                             .build())
                     .append(Text.builder()
-                            .append(Text.of(TextColors.GRAY, "Usage: /trainer help " + aliases.toString().replace("[", "").replace("]", " " + commandSpec.getUsage(source).toPlain())))
+                            .append(Text.of(TextColors.GRAY, "Usage: /trade " + aliases.toString().replace("[", "").replace("]", "") + " " + commandSpec.getUsage(source).toPlain()))
                             .build())
                     .build();
-
             helpList.add(commandHelp);
         }
-        helpList.sort(Text::compareTo);
 
+        helpList.sort(Text::compareTo);
         PaginationService paginationService = Sponge.getServiceManager().provide(PaginationService.class).get();
         PaginationList.Builder paginationBuilder = paginationService.builder().title(Text.of(TextColors.GOLD, "BattleForce Commands v" + PluginInfo.Version)).padding(Text.of(TextColors.DARK_GREEN, "-")).contents(helpList).linesPerPage(14);
         paginationBuilder.sendTo(source);
@@ -50,4 +49,3 @@ public class TrainerHelp implements CommandExecutor {
         return CommandResult.success();
     }
 }
-

@@ -1,4 +1,4 @@
-package me.stgallen.ccommands.commands;
+package me.stgallen.ccommands.commands.PC;
 
 import com.google.common.collect.Lists;
 import me.stgallen.ccommands.Commands;
@@ -28,13 +28,13 @@ public class PCHelp implements CommandExecutor {
 
             Text commandHelp = Text.builder()
                     .append(Text.builder()
-                            .append(Text.of(TextColors.GOLD, "/pc " + aliases.toString().replace("[", "").replace("]", " ")))
+                            .append(Text.of(TextColors.GOLD, "/comp " + aliases.toString().replace("[", "").replace("]", " ")))
                             .build())
                     .append(Text.builder()
                             .append(Text.of(TextColors.WHITE, " - " + commandSpec.getShortDescription(source).get().toPlain() + "\n"))
                             .build())
                     .append(Text.builder()
-                            .append(Text.of(TextColors.GRAY, "Usage: /pc " + aliases.toString().replace("[", "").replace("]", "") + " " + commandSpec.getUsage(source).toPlain()))
+                            .append(Text.of(TextColors.GRAY, "Usage: /comp " + aliases.toString().replace("[", "").replace("]", "") + " " + commandSpec.getUsage(source).toPlain()))
                             .build())
                     .build();
             helpList.add(commandHelp);

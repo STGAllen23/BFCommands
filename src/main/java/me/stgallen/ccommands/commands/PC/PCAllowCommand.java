@@ -1,4 +1,4 @@
-package me.stgallen.ccommands.commands;
+package me.stgallen.ccommands.commands.PC;
 
 import me.stgallen.ccommands.PluginInfo;
 import org.spongepowered.api.Sponge;
@@ -16,6 +16,7 @@ public class PCAllowCommand implements CommandExecutor {
         Player player = (Player) src;
         src.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GOLD, "PC Interaction Allowed."));
         Sponge.getCommandManager().process(player, "cf interact-entity-secondary pixelmon:pc true");
+        Sponge.getCommandManager().process(player, "cf interact-inventory pixelmon:pc true");
     return CommandResult.success();
     }
 }

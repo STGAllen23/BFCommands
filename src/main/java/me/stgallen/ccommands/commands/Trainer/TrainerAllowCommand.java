@@ -1,4 +1,4 @@
-package me.stgallen.ccommands.commands;
+package me.stgallen.ccommands.commands.Trainer;
 
 import me.stgallen.ccommands.PluginInfo;
 import org.spongepowered.api.Sponge;
@@ -10,14 +10,13 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 
-public class TrainerDeny implements CommandExecutor {
+public class TrainerAllowCommand implements CommandExecutor {
     @Override
-    public CommandResult execute(CommandSource source, CommandContext args) {
-        Player player = (Player) source;
-        source.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GREEN, "Trainer interaction Denied."));
-        Sponge.getCommandManager().process(player, "cf interact-entity-secondary pixelmon:trainer false");
+    public CommandResult execute(CommandSource src, CommandContext args) {
+        Player player = (Player) src;
+        src.sendMessage(Text.of(PluginInfo.PluginPrefix, TextColors.GOLD, "Trainer interaction allowed"));
+        Sponge.getCommandManager().process(player, "cf interact-entity-secondary pixelmon:trainer true");
         return CommandResult.success();
     }
 }
-
 

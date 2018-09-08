@@ -10,7 +10,9 @@ Commands:
     
     - Base Permssion(Required): bf.command.help
     
-    -/pc allow,a,true Permission: bf.command.allow
-    -/pc deny,d,false Permission: bf.command.deny
+    -/comp allow,a,true Permission: bf.command.allow
+    -/comp deny,d,false Permission: bf.command.deny
     -/trainer allow,a,true Permission: bf.command.allow
     -/trainer deny,d,false Permission: bf.command.deny
+    -/trade allow,a,true Permission: bf.command.allow
+    -/trade deny,d,false Permission: bf.command.deny
